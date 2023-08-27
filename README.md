@@ -39,6 +39,7 @@ For State Management:
 - Zustand from [this link](https://github.com/pmndrs/zustand)
 
 For DB: 
+- react-hook-form
 - prisma-client from [this link](https://www.prisma.io/docs/concepts/components/prisma-client)
 - next-auth 
 - @prisma/client @auth/prisma-adapter from [this link](https://authjs.dev/reference/adapter/prisma)
