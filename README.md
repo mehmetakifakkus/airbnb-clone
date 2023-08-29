@@ -45,3 +45,7 @@ For DB:
 - @prisma/client @auth/prisma-adapter from [this link](https://authjs.dev/reference/adapter/prisma)
 - bcrypt from [this link](https://www.npmjs.com/package/bcrypt)
 - query-string
+- world-countries
+- react-select
+- leaflet (npm i leaflet, npm i -D @types/leaflet, npm i react-leaflet)
+- next-cloudinary (https://next.cloudinary.dev/installation)
