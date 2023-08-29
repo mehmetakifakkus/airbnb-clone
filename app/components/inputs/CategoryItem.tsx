@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+
 import { IconType } from "react-icons";
 
 type Props = {
