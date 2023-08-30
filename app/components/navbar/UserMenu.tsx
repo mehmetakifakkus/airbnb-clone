@@ -73,9 +73,9 @@ export default function UserMenu({}: Props) {
                 <hr />
                 <MenuItem
                   onClick={() => {
-                    signOut({ redirect: false });
-                    setIsOpen(false);
                     toast.success("Logged out");
+                    setIsOpen(false);
+                    signOut({ redirect: true, callbackUrl: "/" });
                   }}
                 >
                   Log out
