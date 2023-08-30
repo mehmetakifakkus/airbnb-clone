@@ -3,7 +3,6 @@
 import { useFavorites } from "@/app/hooks/useFavorites";
 import { User } from "@prisma/client";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import useLoginModal from "@/app/hooks/useLoginModal";
 
 type Props = {
   listingId: string;
@@ -15,8 +14,6 @@ export default function HeartButton({ listingId, currentUser }: Props) {
     currentUser as User,
     listingId
   );
-
-  const { setOpen } = useLoginModal();
 
   return (
     <div

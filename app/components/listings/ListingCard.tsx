@@ -32,6 +32,7 @@ export default function ListingCard({
 }: Props) {
   const router = useRouter();
   const { getByValue } = useCountries();
+  console.log(currentUser);
 
   const location = getByValue(listing.locationValue);
 
@@ -80,8 +81,6 @@ export default function ListingCard({
             />
           </div>
         </div>
-
-        {/* <h1 className="select-none">{listing.title}</h1> */}
         <div className="font-semibold text-lg">
           {location?.region}, {location?.label}
         </div>
