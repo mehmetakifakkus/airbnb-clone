@@ -66,7 +66,7 @@ export default function UserMenu({}: Props) {
               {/* <p className="mx-2">Hey {session?.user?.name}!</p> */}
               <>
                 <MenuItem onClick={() => {}}>My trips</MenuItem>
-                <MenuItem onClick={() => {}}>My favourites</MenuItem>
+                <MenuItem onClick={() => {}}>My favorites</MenuItem>
                 <MenuItem onClick={() => {}}>My reservations</MenuItem>
                 <MenuItem onClick={() => {}}>My properties</MenuItem>
                 <MenuItem onClick={rentModal.setOpen}>Airbnb my home</MenuItem>
