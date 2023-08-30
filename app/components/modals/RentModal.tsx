@@ -55,7 +55,7 @@ export default function RentModal({}: Props) {
   });
 
   const selectedCategory = watch("category");
-  const country = watch("country");
+  const location = watch("location");
   const roomCount = watch("roomCount");
   const bathroomCount = watch("bathroomCount");
   const guestCount = watch("guestCount");
@@ -63,7 +63,7 @@ export default function RentModal({}: Props) {
 
   const Map = useMemo(
     () => dynamic(() => import("../Map"), { ssr: false }),
-    [country]
+    [location]
   );
 
   const setCustomValue = (
@@ -90,14 +90,36 @@ export default function RentModal({}: Props) {
   };
 
   const onSubmit = (data: FieldValues) => {
-    if (step !== STEPS.PRICE) return onNext();
+    if (step !== STEPS.PRICE) {
+      if (step === STEPS.CATEGORY) {
+        if (!data.category) {
+          toast.error("Please select a category");
+          return;
+        }
+      }
 
-    console.log(data);
+      if (step === STEPS.LOCATION) {
+        if (!data.location) {
+          toast.error("Please select a location");
+          return;
+        }
+      }
+
+      if (step === STEPS.IMAGES) {
+        if (!data.imageSrc) {
+          toast.error("Please upload an image");
+          return;
+        }
+      }
+
+      return onNext();
+    }
 
     axios
       .post("/api/listings", data)
       .then(() => {
         toast.success("Listing created!");
+        setStep(STEPS.CATEGORY);
         reset();
         rentModal.setClose();
       })
@@ -121,7 +143,7 @@ export default function RentModal({}: Props) {
             key={category.label}
             {...category}
             selected={selectedCategory === category.label}
-            onClick={(label: string) => {
+            onClick={async (label: string) => {
               setCustomValue("category", label);
             }}
           />
@@ -138,10 +160,10 @@ export default function RentModal({}: Props) {
           subtitle="Help guests find your place"
         />
         <CountrySelect
-          value={country}
-          onChange={(value) => setCustomValue("country", value)}
+          value={location}
+          onChange={(value) => setCustomValue("location", value)}
         />
-        <Map center={country?.latlng || [39.6, 32.6]} />
+        <Map center={location?.latlng || [39.6, 32.6]} />
       </div>
     );
   }
