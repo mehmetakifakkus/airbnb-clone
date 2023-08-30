@@ -49,3 +49,4 @@ For DB:
 - react-select
 - leaflet (npm i leaflet, npm i -D @types/leaflet, npm i react-leaflet)
 - next-cloudinary (https://next.cloudinary.dev/installation)
+- moment
