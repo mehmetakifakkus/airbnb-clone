@@ -9,7 +9,7 @@ import Categories from "./Categories";
 
 function Navbar() {
   return (
-    <div className="fixed w-full bg-white shadow-sm">
+    <div className="fixed w-full bg-white shadow-sm z-10">
       <div className="py-4 border-b-[1px]">
         <SessionProvider>
           <Container>
