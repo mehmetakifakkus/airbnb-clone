@@ -32,7 +32,6 @@ export default function ListingCard({
 }: Props) {
   const router = useRouter();
   const { getByValue } = useCountries();
-  console.log(currentUser);
 
   const location = getByValue(listing.locationValue);
 
