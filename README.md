@@ -50,3 +50,4 @@ For DB:
 - leaflet (npm i leaflet, npm i -D @types/leaflet, npm i react-leaflet)
 - next-cloudinary (https://next.cloudinary.dev/installation)
 - moment
+- react-date-range (npm i -D @types/react-date-range)
