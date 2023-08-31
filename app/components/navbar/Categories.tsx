@@ -18,9 +18,11 @@ import { FaSkiing } from "react-icons/fa";
 import { BsSnow } from "react-icons/bs";
 import { IoDiamond } from "react-icons/io5";
 import { MdOutlineVilla } from "react-icons/md";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 type Props = {};
+
+export type Category = (typeof categories)[0];
 
 export const categories = [
   {
@@ -103,6 +105,11 @@ export const categories = [
 export default function Categories({}: Props) {
   const params = useSearchParams();
   const categoryParam = params?.get("category");
+
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  if (!isHome) return null;
 
   return (
     <Container>
