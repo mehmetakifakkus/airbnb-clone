@@ -30,9 +30,7 @@ export default function Map({ center }: Props) {
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Marker position={(center as LatLngExpression) || [41.4933, 42.766]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
+        <Popup>A customizble CSS3 popup.</Popup>
       </Marker>
     </MapContainer>
   );
