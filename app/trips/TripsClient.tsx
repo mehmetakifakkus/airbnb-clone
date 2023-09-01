@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-import { Listing, Reservation } from "@prisma/client";
+import { Listing, Reservation, User } from "@prisma/client";
 
 import Container from "../components/Container";
 import ListingCard from "../components/listings/ListingCard";
@@ -14,9 +14,9 @@ type ReservationExtented = Reservation & {
   listing: Listing;
 };
 
-type Props = { reservations: ReservationExtented[] };
+type Props = { reservations: ReservationExtented[]; currentUser?: User | null };
 
-export default function TripsClient({ reservations }: Props) {
+export default function TripsClient({ reservations, currentUser }: Props) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -54,6 +54,7 @@ export default function TripsClient({ reservations }: Props) {
           return (
             <div key={reservation.id}>
               <ListingCard
+                currentUser={currentUser}
                 reservation={reservation}
                 listing={reservation.listing}
                 onAction={onDeleteReservation}

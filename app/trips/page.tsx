@@ -17,5 +17,5 @@ export default async function TripsPage() {
 
   const reservations = await getReservations({ userId: currentUser?.id });
 
-  return <TripsClient reservations={reservations} />;
+  return <TripsClient reservations={reservations} currentUser={currentUser} />;
 }
