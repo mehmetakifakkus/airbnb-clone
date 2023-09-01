@@ -49,10 +49,17 @@ export default function ListingCard({
     else return reservation.totalPrice;
   }, [listing.price, reservation]);
 
+  const formatDate = useCallback((date: Date) => {
+    return moment(date).format("MMM DD, YYYY");
+  }, []);
+
   const reservationDate = useMemo(() => {
     if (!reservation) return null;
-    else return moment(new Date(reservation.startDate)).format("MMM DD, YYYY");
-  }, [reservation]);
+    else
+      return `${formatDate(reservation.startDate)} - ${formatDate(
+        reservation.endDate
+      )}`;
+  }, [reservation, formatDate]);
 
   return (
     <div
