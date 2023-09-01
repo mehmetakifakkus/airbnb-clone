@@ -76,7 +76,7 @@ export default function UserMenu({}: Props) {
               </MenuItem>
               <MenuItem
                 onClick={() => {
-                  router.push("/favourites");
+                  router.push("/favorites");
                 }}
               >
                 My favorites
