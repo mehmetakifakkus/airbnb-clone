@@ -1,15 +1,20 @@
 import Container from "@/app/components/Container";
-import React from "react";
 import ListingHeader from "./ListingHeader";
 import ListingInfo from "./ListingInfo";
-import { Listing, User } from "@prisma/client";
+import { Listing, Reservation, User } from "@prisma/client";
+import ListingReservation from "./ListingReservation";
 
 type Props = {
   listing: Listing;
-  currentUser: User | null;
+  currentUser?: User | null;
+  reservations: Reservation[];
 };
 
-export default function ListingClient({ listing, currentUser }: Props) {
+export default function ListingClient({
+  listing,
+  currentUser,
+  reservations = [],
+}: Props) {
   return (
     <Container>
       <div className="max-w-screen-lg mx-auto">
@@ -20,6 +25,11 @@ export default function ListingClient({ listing, currentUser }: Props) {
               md:grid-cols-7 md:gap-10"
           >
             <ListingInfo listing={listing} currentUser={currentUser} />
+            <ListingReservation
+              listing={listing}
+              currentUser={currentUser}
+              reservations={reservations}
+            />
           </div>
         </div>
       </div>
