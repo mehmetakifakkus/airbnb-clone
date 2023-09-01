@@ -11,7 +11,7 @@ import useCountries from "@/app/hooks/useCountries";
 
 type Props = {
   listing: Listing;
-  currentUser?: User | null;
+  user?: User | null;
 };
 
 export default function ListingInfo({
@@ -23,7 +23,7 @@ export default function ListingInfo({
     locationValue,
     category,
   },
-  currentUser,
+  user,
 }: Props) {
   const categoryObj = useMemo(
     () => categories.find((item) => item.label === category),
@@ -36,10 +36,8 @@ export default function ListingInfo({
     <div className="col-span-4 flex flex-col gap-8">
       <div className="flex flex-col gap-2">
         <div className="flex flex-row gap-2 items-center">
-          <div className="text-xl font-semibold">
-            Hosted by {currentUser?.name}
-          </div>
-          <Avatar imageSrc={currentUser?.image} />
+          <div className="text-xl font-semibold">Hosted by {user?.name}</div>
+          <Avatar imageSrc={user?.image} />
         </div>
         <div className="flex gap-4 text-neutral-500 font-light">
           <div>{pluralize(guestCount, "guest")}</div>

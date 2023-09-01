@@ -10,7 +10,8 @@ type Props = {
 
 export default async function ListingPage({ params }: Props) {
   const currentUser = await getCurrentUser();
-  const listing = await getListingById(params);
+
+  const [listing] = await getListingById(params);
   const reservations = await getReservations(params);
 
   if (!listing) return <EmptyState showReset />;

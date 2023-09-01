@@ -5,7 +5,7 @@ import { Listing, Reservation, User } from "@prisma/client";
 import ListingReservation from "./ListingReservation";
 
 type Props = {
-  listing: Listing;
+  listing: Listing & { user: User };
   currentUser?: User | null;
   reservations: Reservation[];
 };
@@ -24,7 +24,7 @@ export default function ListingClient({
             className=" mt-6 grid grid-cols-1 
               md:grid-cols-7 md:gap-10"
           >
-            <ListingInfo listing={listing} currentUser={currentUser} />
+            <ListingInfo listing={listing} user={listing.user} />
             <ListingReservation
               listing={listing}
               currentUser={currentUser}
