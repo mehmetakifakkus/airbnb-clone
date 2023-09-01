@@ -1,3 +1,5 @@
+"use client";
+
 import { Category } from "@/app/components/navbar/Categories";
 import React from "react";
 
