@@ -11,7 +11,7 @@ import useCountries from "@/app/hooks/useCountries";
 
 type Props = {
   listing: Listing;
-  currentUser: User | null;
+  currentUser?: User | null;
 };
 
 export default function ListingInfo({

@@ -1,6 +1,5 @@
 "use client";
 
-import getCurrentUser from "@/app/actions/getCurrentUser";
 import HeartButton from "@/app/components/listings/HeartButton";
 import useCountries from "@/app/hooks/useCountries";
 import { Listing, User } from "@prisma/client";
@@ -9,7 +8,7 @@ import React from "react";
 
 type Props = {
   listing: Listing;
-  currentUser: User | null;
+  currentUser?: User | null;
 };
 
 export default function ListingHeader({
