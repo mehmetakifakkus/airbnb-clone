@@ -3,15 +3,23 @@
 import Heading from "./navbar/Heading";
 import Button from "./Button";
 import { useRouter } from "next/navigation";
+import useLoginModal from "../hooks/useLoginModal";
 
-type Props = { title?: string; subtitle?: string; showReset: boolean };
+type Props = {
+  title?: string;
+  subtitle?: string;
+  showReset?: boolean;
+  showLogin?: boolean;
+};
 
 export default function EmptyState({
   title = "No exact matches found",
   subtitle = "You can add new listings to view here!",
   showReset,
+  showLogin,
 }: Props) {
   const router = useRouter();
+  const loginModal = useLoginModal();
 
   return (
     <div
@@ -28,6 +36,11 @@ export default function EmptyState({
               router.push("/");
             }}
           />
+        </div>
+      )}
+      {showLogin && (
+        <div className="mt-4 w-48">
+          <Button label="Login" onClick={loginModal.setOpen} />
         </div>
       )}
     </div>
