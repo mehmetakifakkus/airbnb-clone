@@ -1,14 +1,17 @@
 "use client";
 
 import React, { useCallback } from "react";
+import { signOut, useSession } from "next-auth/react";
 import { AiOutlineMenu } from "react-icons/ai";
-import Avatar from "../Avatar";
-import MenuItem from "./MenuItem";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+
 import useRegisterStore from "@/app/hooks/useRegisterModal";
 import useLoginStore from "@/app/hooks/useLoginModal";
-import { signOut, useSession } from "next-auth/react";
-import { toast } from "react-hot-toast";
 import useRentModal from "@/app/hooks/useRentModal";
+
+import Avatar from "../Avatar";
+import MenuItem from "./MenuItem";
 
 type Props = {};
 
@@ -18,6 +21,7 @@ export default function UserMenu({}: Props) {
   const { setOpen: setLoginModalOpen, isOpen: isLoginModalOpen } =
     useLoginStore();
   const rentModal = useRentModal();
+  const router = useRouter();
 
   const { data: session, status } = useSession();
 
@@ -63,24 +67,27 @@ export default function UserMenu({}: Props) {
         >
           {(status as string) === "authenticated" ? (
             <>
-              {/* <p className="mx-2">Hey {session?.user?.name}!</p> */}
-              <>
-                <MenuItem onClick={() => {}}>My trips</MenuItem>
-                <MenuItem onClick={() => {}}>My favorites</MenuItem>
-                <MenuItem onClick={() => {}}>My reservations</MenuItem>
-                <MenuItem onClick={() => {}}>My properties</MenuItem>
-                <MenuItem onClick={rentModal.setOpen}>Airbnb my home</MenuItem>
-                <hr />
-                <MenuItem
-                  onClick={() => {
-                    toast.success("Logged out");
-                    setIsOpen(false);
-                    signOut({ redirect: true, callbackUrl: "/" });
-                  }}
-                >
-                  Log out
-                </MenuItem>
-              </>
+              <MenuItem
+                onClick={() => {
+                  router.push("/trips");
+                }}
+              >
+                My trips
+              </MenuItem>
+              <MenuItem onClick={() => {}}>My favorites</MenuItem>
+              <MenuItem onClick={() => {}}>My reservations</MenuItem>
+              <MenuItem onClick={() => {}}>My properties</MenuItem>
+              <MenuItem onClick={rentModal.setOpen}>Airbnb my home</MenuItem>
+              <hr />
+              <MenuItem
+                onClick={() => {
+                  toast.success("Logged out");
+                  setIsOpen(false);
+                  signOut({ redirect: true, callbackUrl: "/" });
+                }}
+              >
+                Log out
+              </MenuItem>
             </>
           ) : (
             <>
