@@ -9,8 +9,14 @@ type Props = {
 };
 
 export default async function Home({ searchParams }: Props) {
-  const listings = await getListings(searchParams);
+  const dd = (searchParams: any) => {
+    const { category } = searchParams;
+  };
+
+  dd(searchParams);
+
   const currentUser = await getCurrentUser();
+  const listings = await getListings(searchParams);
 
   if (listings.length === 0) return <EmptyState showReset />;
 
