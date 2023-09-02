@@ -4,9 +4,19 @@ import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import ListingCard from "./components/listings/ListingCard";
 
-export default async function Home() {
-  const listings = await getListings();
+type Props = {
+  searchParams: { category?: string };
+};
+
+export default async function Home({ searchParams }: Props) {
+  const dd = (searchParams: any) => {
+    const { category } = searchParams;
+  };
+
+  dd(searchParams);
+
   const currentUser = await getCurrentUser();
+  const listings = await getListings(searchParams);
 
   if (listings.length === 0) return <EmptyState showReset />;
 
