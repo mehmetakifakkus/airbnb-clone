@@ -12,6 +12,7 @@ import useRentModal from "@/app/hooks/useRentModal";
 
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
+import OutsideAlerter from "../OutsideAlerter";
 
 type Props = {};
 
@@ -31,104 +32,110 @@ export default function UserMenu({}: Props) {
   }, [rentModal, session, setLoginModalOpen]);
 
   return (
-    <div className="relative">
-      <div className="flex items-center gap-3">
-        <div
-          onClick={onRent}
-          className="
+    <OutsideAlerter setOpen={setIsOpen}>
+      <div className="relative">
+        <div className="flex items-center gap-3">
+          <div
+            onClick={onRent}
+            className="
             hidden md:block text-sm font-semibold
             py-3 px-4 rounded-full hover:bg-neutral-100
             transition cursor-pointer
             "
-        >
-          Airbnb your home
-        </div>
-        <div
-          onClick={() => {
-            setIsOpen((prev) => !prev);
-          }}
-          className="
+          >
+            Airbnb your home
+          </div>
+          <div
+            onClick={() => {
+              setIsOpen((prev) => !prev);
+            }}
+            className="
             p-4 md:py-1 md:px-2 border border-neutral-200 
             flex items-center gap-3 rounded-full 
             cursor-pointer hover:shadow-md transition"
-        >
-          <AiOutlineMenu />
-          <div className="hidden md:block">
-            <Avatar imageSrc={session?.user?.image} />
+          >
+            <AiOutlineMenu />
+            <div className="hidden md:block">
+              <Avatar imageSrc={session?.user?.image} />
+            </div>
           </div>
         </div>
-      </div>
-      {isOpen && (
-        <div
-          className="
+        {isOpen && (
+          <div
+            className="
             absolute w-[32vw] md:w-3/4 top-12 right-0
             text-sm overflow-hidden
             rounded-xl bg-white border border-neutral-200"
-        >
-          {(status as string) === "authenticated" ? (
-            <>
-              <MenuItem
-                onClick={() => {
-                  router.push("/trips");
-                }}
-              >
-                My trips
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  router.push("/favorites");
-                }}
-              >
-                My favorites
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  router.push("/reservations");
-                }}
-              >
-                My reservations
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  router.push("/properties");
-                }}
-              >
-                My properties
-              </MenuItem>
-              <MenuItem onClick={rentModal.setOpen}>Airbnb my home</MenuItem>
-              <hr />
-              <MenuItem
-                onClick={() => {
-                  toast.success("Logged out");
-                  setIsOpen(false);
-                  signOut({ redirect: true, callbackUrl: "/" });
-                }}
-              >
-                Log out
-              </MenuItem>
-            </>
-          ) : (
-            <>
-              <MenuItem
-                onClick={() => {
-                  setLoginModalOpen();
-                  setIsOpen(false);
-                }}
-              >
-                Login
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  setRegisterModalOpen();
-                  setIsOpen(false);
-                }}
-              >
-                Sign Up
-              </MenuItem>
-            </>
-          )}
-        </div>
-      )}
-    </div>
+          >
+            {(status as string) === "authenticated" ? (
+              <>
+                <MenuItem
+                  onClick={() => {
+                    router.push("/trips");
+                    setIsOpen(false);
+                  }}
+                >
+                  My trips
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    router.push("/favorites");
+                    setIsOpen(false);
+                  }}
+                >
+                  My favorites
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    router.push("/reservations");
+                    setIsOpen(false);
+                  }}
+                >
+                  My reservations
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    router.push("/properties");
+                    setIsOpen(false);
+                  }}
+                >
+                  My properties
+                </MenuItem>
+                <MenuItem onClick={rentModal.setOpen}>Airbnb my home</MenuItem>
+                <hr />
+                <MenuItem
+                  onClick={() => {
+                    toast.success("Logged out");
+                    setIsOpen(false);
+                    signOut({ redirect: true, callbackUrl: "/" });
+                  }}
+                >
+                  Log out
+                </MenuItem>
+              </>
+            ) : (
+              <>
+                <MenuItem
+                  onClick={() => {
+                    setLoginModalOpen();
+                    setIsOpen(false);
+                  }}
+                >
+                  Login
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    setRegisterModalOpen();
+                    setIsOpen(false);
+                  }}
+                >
+                  Sign Up
+                </MenuItem>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+    </OutsideAlerter>
   );
 }

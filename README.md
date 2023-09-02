@@ -16,19 +16,17 @@ This project consists of basic features of well-known Airbnb website including b
 - `Mongo.db`
 
 ## Live Site
-
-Check out the [live site](https://rock-paper-scissors-six-eta.vercel.app/).
+Check out the [live site](https://airbnb-clone-mehmetakifakkus.vercel.app/).
 
 ## Folder Structure
-
 - `app`: Contains the source code of the Nextjs application. It uses Nextjs app router.
   - `page.tsx`: Entry point of the application that runs when routing is `/`.
   - `components`: Contains reusable React components used throughout the application.
   - `context`: It contains context used in the application. There are two context: 1) User context: stores main user that interacts with the comments section 2) Comments context which makes comments and their replies available throughout the application
 - `globals.css`: Contains Tailwind directives and custom styles for the application.
 - `screenshots`: Includes screenshots of the application.
+- 
 ## Deployment
-
 To deploy the application to production, run `npm run build`. This will create an optimized build in the dist folder, which can be deployed to a web server or hosting service of your choice.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -38,11 +36,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Contributions to the project are welcome! Feel free to open issues and pull requests for bug fixes, improvements, or new features.
 
 ## Author
-
 - Website - [mehmetakifakkus](https://mehmetakifakkus.github.io)
 - Frontend Mentor - [@mehmetakifakkus](https://www.frontendmentor.io/profile/mehmetakifakkus)
+- 
 ## License
-
 This project is licensed under the [MIT License](LICENSE).
 
 

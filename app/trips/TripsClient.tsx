@@ -9,6 +9,8 @@ import { Listing, Reservation, User } from "@prisma/client";
 import Container from "../components/Container";
 import ListingCard from "../components/listings/ListingCard";
 import { useRouter } from "next/navigation";
+import EmptyState from "../components/EmptyState";
+import Heading from "../components/navbar/Heading";
 
 type ReservationExtented = Reservation & {
   listing: Listing;
@@ -41,8 +43,15 @@ export default function TripsClient({ reservations, currentUser }: Props) {
 
   return (
     <Container>
+      {reservations.length === 0 && (
+        <EmptyState
+          title="No reservations"
+          subtitle="You have no reservations yet"
+        />
+      )}
+      <Heading title="My Trips" subtitle="Trips that I have booked" />
       <div
-        className="grid grid-cols-1 gap-8
+        className="mt-8 grid grid-cols-1 gap-8
           sm:grid-cols-2 
           md:grid-cols-3
           lg:grid-cols-4
