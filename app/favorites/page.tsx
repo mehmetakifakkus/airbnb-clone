@@ -20,5 +20,10 @@ export default async function favoritesPage() {
     listingIds: currentUser?.favoriteIds,
   });
 
+  if (favorites.length === 0)
+    return (
+      <EmptyState title="No favorites" subtitle="You have no favorites " />
+    );
+
   return <FavoritesClient currentUser={currentUser} favorites={favorites} />;
 }

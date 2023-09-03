@@ -20,5 +20,13 @@ export default async function propertiesPage() {
     userId: currentUser?.id,
   });
 
+  if (properties.length === 0)
+    return (
+      <EmptyState
+        title="No Properties"
+        subtitle="You have no properties yet, create one!"
+      />
+    );
+
   return <PropertiesClient currentUser={currentUser} properties={properties} />;
 }

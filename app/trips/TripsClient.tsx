@@ -43,14 +43,10 @@ export default function TripsClient({ reservations, currentUser }: Props) {
 
   return (
     <Container>
-      {reservations.length === 0 && (
-        <EmptyState
-          title="No reservations"
-          subtitle="You have no reservations yet"
-        />
-      )}
-
-      <Heading title="My Trips" subtitle="Trips that I have booked" />
+      <Heading
+        title="My Trips"
+        subtitle="Where you've been and where you're going"
+      />
       <div
         className="mt-8 grid grid-cols-1 gap-8
           sm:grid-cols-2 

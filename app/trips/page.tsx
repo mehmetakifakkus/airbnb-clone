@@ -17,5 +17,8 @@ export default async function TripsPage() {
 
   const reservations = await getReservations({ userId: currentUser?.id });
 
+  if (reservations.length === 0)
+    return <EmptyState title="No Trips" subtitle="You have no trips booked" />;
+
   return <TripsClient reservations={reservations} currentUser={currentUser} />;
 }

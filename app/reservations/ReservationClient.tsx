@@ -10,6 +10,7 @@ import { Listing, Reservation, User } from "@prisma/client";
 import Heading from "../components/navbar/Heading";
 import ListingCard from "../components/listings/ListingCard";
 import EmptyState from "../components/EmptyState";
+import Container from "../components/Container";
 
 type ReservationExtented = Reservation & {
   listing: Listing;
@@ -47,7 +48,7 @@ export default function ReservationClient({
   );
 
   return (
-    <>
+    <Container>
       {reservations.length === 0 && (
         <EmptyState
           title="No reservations"
@@ -81,6 +82,6 @@ export default function ReservationClient({
           );
         })}
       </div>
-    </>
+    </Container>
   );
 }
