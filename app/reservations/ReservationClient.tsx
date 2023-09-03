@@ -1,24 +1,29 @@
 "use client";
 
-import { useCallback, useState } from "react";
-import { toast } from "react-hot-toast";
+import React, { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 import axios from "axios";
 
 import { Listing, Reservation, User } from "@prisma/client";
 
-import Container from "../components/Container";
+import Heading from "../components/navbar/Heading";
 import ListingCard from "../components/listings/ListingCard";
 import EmptyState from "../components/EmptyState";
-import Heading from "../components/navbar/Heading";
 
 type ReservationExtented = Reservation & {
   listing: Listing;
 };
 
-type Props = { reservations: ReservationExtented[]; currentUser?: User | null };
+type Props = {
+  reservations: ReservationExtented[];
+  currentUser?: User | null;
+};
 
-export default function TripsClient({ reservations, currentUser }: Props) {
+export default function ReservationClient({
+  reservations,
+  currentUser,
+}: Props) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -42,7 +47,7 @@ export default function TripsClient({ reservations, currentUser }: Props) {
   );
 
   return (
-    <Container>
+    <>
       {reservations.length === 0 && (
         <EmptyState
           title="No reservations"
@@ -50,15 +55,15 @@ export default function TripsClient({ reservations, currentUser }: Props) {
         />
       )}
 
-      <Heading title="My Trips" subtitle="Trips that I have booked" />
+      <Heading title="My Reservations" subtitle="Bookings on your properties" />
       <div
         className="mt-8 grid grid-cols-1 gap-8
-          sm:grid-cols-2 
-          md:grid-cols-3
-          lg:grid-cols-4
-          xl:grid-cols-5
-          2xl:grid-cols-6
-        "
+      sm:grid-cols-2 
+      md:grid-cols-3
+      lg:grid-cols-4
+      xl:grid-cols-5
+      2xl:grid-cols-6
+    "
       >
         {reservations.map((reservation) => {
           return (
@@ -69,13 +74,13 @@ export default function TripsClient({ reservations, currentUser }: Props) {
                 listing={reservation.listing}
                 onAction={onDeleteReservation}
                 actionId={reservation.id}
-                actionLabel="Cancel My Reservation"
+                actionLabel="Cancel Guest Reservation"
                 disabled={isLoading}
               />
             </div>
           );
         })}
       </div>
-    </Container>
+    </>
   );
 }
