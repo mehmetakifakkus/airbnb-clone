@@ -52,6 +52,7 @@ For State Management:
 - Zustand from [this link](https://github.com/pmndrs/zustand)
 
 For DB: 
+- prisma from [this link](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch-typescript-postgres)
 - prisma-client from [this link](https://www.prisma.io/docs/concepts/components/prisma-client)
 - @prisma/client @auth/prisma-adapter from [this link](https://authjs.dev/reference/adapter/prisma)
   
@@ -81,3 +82,4 @@ For date manipulation and creating date picker
 
 Others:
 - query-string (creating query string from an object)
+- react-hot-toast (for user feedback in animation)
